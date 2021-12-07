@@ -1,5 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {WebSocketService} from './services/web-socket/web-socket.service';
+import {ChatService} from './services/chat-service/chat.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -10,14 +11,19 @@ import {Subscription} from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
 
   subEvent$: Subscription | undefined;
+  subEventNGX$: Subscription | undefined;
   subscriptionList = new Subscription();
   title = 'Web Sockets';
 
-  constructor(private _webSocketService: WebSocketService) {
+  constructor(private _webSocketService: WebSocketService, private _chatService: ChatService) {
   }
 
   ngOnInit() {
     this.listenToEvent('test event');
+  }
+
+  listenToEventNGX(eventExample: string) {
+    // this.subEventNGX$
   }
 
   listenToEvent(eventExample: string) {
