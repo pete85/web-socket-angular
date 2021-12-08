@@ -36,10 +36,12 @@
                   <mat-label>Nights</mat-label>
                   <input matInput type="number" placeholder="Type a message"
                          [(ngModel)]="messageText"
-                         (keyup)="$event.keyCode === 13 && sendMessage()">
+                         (keyup)="$event.key === 'Enter' && sendMessage()">
                 </mat-form-field>
               </div>
-              <div fxFlex="20"></div>
+              <div fxFlex="20" fxLayoutAlign="center center">
+                <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+              </div>
             </div>
           </div>
 

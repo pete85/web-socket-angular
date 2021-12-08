@@ -516,51 +516,51 @@ p {
 *****************************************************/
 
 .border-1px {
-  border: 1px solid $hoistGrey;
+  border: 1px solid map-get($theme-colors, 'grey');
 }
 
 .border-2px {
-  border: 2px solid $hoistGrey;
+  border: 2px solid map-get($theme-colors, 'grey');
 }
 
 .border-top-1px {
-  border-top: 1px solid $hoistGrey;
+  border-top: 1px solid map-get($theme-colors, 'grey');
 }
 
 .border-right-1px {
-  border-right: 1px solid $hoistGrey;
+  border-right: 1px solid map-get($theme-colors, 'grey');
 }
 
 .border-bottom-1px {
-  border-bottom: 1px solid $hoistGrey;
+  border-bottom: 1px solid map-get($theme-colors, 'grey');
 }
 
 .border-bottom-1px-lightGrey {
-  border-bottom: 1px solid $hoistGreyLight;
+  border-bottom: 1px solid map-get($theme-colors, 'grey');
 }
 
 .border-bottom-1px-white {
-  border-bottom: 1px solid $white;
+  border-bottom: 1px solid map-get($theme-colors, 'white');
 }
 
 .border-left-1px {
-  border-left: 1px solid $hoistGrey;
+  border-left: 1px solid map-get($theme-colors, 'grey');
 }
 
 .border-top-2px {
-  border-top: 2px solid $hoistGrey;
+  border-top: 2px solid map-get($theme-colors, 'grey');
 }
 
 .border-right-2px {
-  border-right: 2px solid $hoistGrey;
+  border-right: 2px solid map-get($theme-colors, 'grey');
 }
 
 .border-bottom-2px {
-  border-bottom: 2px solid $hoistGrey;
+  border-bottom: 2px solid map-get($theme-colors, 'grey');
 }
 
 .border-left-2px {
-  border-left: 2px solid $hoistGrey;
+  border-left: 2px solid map-get($theme-colors, 'grey');
 }
 
 .border-radius-5px {
@@ -588,11 +588,11 @@ p {
 *****************************************************/
 
 .bgGreyDark {
-  background-color: $hoistGreyDark !important;
+  background-color: map-get($theme-colors, 'grey') !important;
 }
 
 .bgGreyLight {
-  background-color: $hoistGreyLight !important;
+  background-color: map-get($theme-colors, 'grey') !important;
 }
 
 .bgGreen {
@@ -785,7 +785,7 @@ p {
 
 .dividerDiv {
   height: 3px;
-  border-bottom: 1px solid $hoistGreyLight;
+  border-bottom: 1px solid map-get($theme-colors, 'grey');
 }
 
 /*****************************************************
@@ -793,7 +793,7 @@ p {
 *****************************************************/
 
 .band-1, .band-2, .band-3, .band-4, .band-5 {
-  color: $white;
+  color: map-get($theme-colors, 'white');
   font-weight: 700;
   text-align: center;
 }

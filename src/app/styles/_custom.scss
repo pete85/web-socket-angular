@@ -1,0 +1,7 @@
+@import "variables";
+
+.user-list-card {
+  background-color: map-get($theme-colors, 'yellow');
+  border-radius: 5px;
+}
+

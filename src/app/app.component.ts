@@ -44,10 +44,34 @@ export class AppComponent implements OnInit, OnDestroy {
   currentUser: User;
   selectedUser: any;
   userList: User[] = [
-    {id: 1, name: 'Zbigniew', phone: '534768234', image: '', roomId: {2: 'room-1', 3: 'room-2', 4: 'room-3'}},
-    {id: 2, name: 'Ryszard', phone: '598345676', image: '', roomId: {1: 'room-1', 3: 'room-4', 4: 'room-5'}},
-    {id: 3, name: 'Marian', phone: '565992334', image: '', roomId: {1: 'room-2', 2: 'room-4', 4: 'room-6'}},
-    {id: 4, name: 'Zdzislaw', phone: '509345666', image: '', roomId: {1: 'room-3', 2: 'room-5', 3: 'room-6'}}
+    {
+      id: 1,
+      name: 'Zbigniew',
+      phone: '534768234',
+      image: 'assets/images/user-1.png',
+      roomId: {2: 'room-1', 3: 'room-2', 4: 'room-3'}
+    },
+    {
+      id: 2,
+      name: 'Ryszard',
+      phone: '598345676',
+      image: 'assets/images/user-2.png',
+      roomId: {1: 'room-1', 3: 'room-4', 4: 'room-5'}
+    },
+    {
+      id: 3,
+      name: 'Marian',
+      phone: '565992334',
+      image: 'assets/images/user-3.png',
+      roomId: {1: 'room-2', 2: 'room-4', 4: 'room-6'}
+    },
+    {
+      id: 4,
+      name: 'Zdzislaw',
+      phone: '509345666',
+      image: 'assets/images/user-4.png',
+      roomId: {1: 'room-3', 2: 'room-5', 3: 'room-6'}
+    }
   ];
 
   constructor(private _webSocketService: WebSocketService, private _chatService: ChatService) {
