@@ -8,8 +8,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {FlexModule} from '@angular/flex-layout';
 import {DialogComponent} from './dialog/dialog.component';
 
-// const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +17,6 @@ import {DialogComponent} from './dialog/dialog.component';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    // SocketIoModule.forRoot(config),
     FormsModule,
     HttpClientModule,
     FlexModule

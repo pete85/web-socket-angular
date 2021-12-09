@@ -103,6 +103,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectUserHandler(phone: any): void {
     this.selectedUser = this.userList.find(user => user.phone === phone);
+    console.log('Phone: ', phone);
+    console.log('Selected user: ', this.selectedUser);
     this.roomId = this.selectedUser?.roomId[this.currentUser.id];
     this.messageArray = [];
 

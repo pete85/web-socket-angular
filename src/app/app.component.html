@@ -1,37 +1,54 @@
 <div fxLayout="column" fxFlex *ngIf="currentUser" class="animated fadeIn">
   <div fxLayout fxFlex>
 
+    <!-- ******************************************************************** -->
+    <!-- **************************** Users list **************************** -->
+    <!-- ******************************************************************** -->
     <div fxFlex="30">
-      <div class="user-list-card">
-        <div class="user-card"
-             [class.active]="selectedUser?.phone"
+      <div class="user-list-card" fxLayout="column" fxFlex>
+        <div class="user-card" fxLayout fxFlex="70px"
              *ngFor="let user of userList"
+             [class.active]="selectedUser?.phone === user?.phone"
              (click)="selectUserHandler(user?.phone)">
-          <img [src]="user?.image" [alt]="user?.name" class="avatar">
-          <p class="username">{{user?.name}}</p>
+          <div fxFlex="80px" fxLayoutAlign="start center" class="padding10">
+            <img [src]="user?.image" [alt]="user?.name" class="avatar">
+          </div>
+          <div fxFlex fxLayoutAlign="start center" class="padding10">
+            <h4 class="username">{{user?.name}}</h4>
+          </div>
+        </div>
+        <div class="currentUserDetails">
+          <p>
+            <span class="font700">Current user: </span>
+            <span>{{currentUser.name}}</span>
+          </p>
         </div>
       </div>
     </div>
+
+    <!-- ******************************************************************* -->
+    <!-- **************************** Chat body **************************** -->
+    <!-- ******************************************************************* -->
     <div fxFlex>
-
-      <div class="chat-container">
+      <div class="chat-container" fxLayout="column" fxFlex>
         <ng-container *ngIf="selectedUser">
-          <div class="chat-header">
-            <img [src]="selectedUser?.image" [alt]="selectedUser?.name" class="avatar">
-            <p class="username">{{selectedUser?.name}}</p>
-          </div>
-
-          <div class="chat-body">
-            <div *ngFor="let item of messageArray" [class.same-user]="item?.user === currentUser?.name">
-
-              <p class="message-container">{{item?.message}}</p>
-
+          <div class="chat-header padding10" fxLayout fxFlex="50px" fxLayoutAlign="start center">
+            <div fxFlex="50px">
+              <img [src]="selectedUser?.image" [alt]="selectedUser?.name" class="avatar">
+            </div>
+            <div fxFlex>
+              <p class="username">{{selectedUser?.name}}</p>
             </div>
           </div>
-
-          <div class="chat-footer">
+          <div class="chat-body">
+            <div *ngFor="let item of messageArray" class="message-container"
+                 [class.same-user]="item?.user === currentUser?.name">
+              <p>{{item?.message}}</p>
+            </div>
+          </div>
+          <div class="chat-footer" fxLayout fxFlex="100px" fxLayoutAlign="start center">
             <div fxLayout fxFlex>
-              <div fxFlex>
+              <div fxFlex fxLayoutAlign="start center">
                 <mat-form-field appearance="outline" class="min-w-50px w100">
                   <mat-label>Message</mat-label>
                   <input matInput type="text" placeholder="Type a message"
@@ -44,11 +61,8 @@
               </div>
             </div>
           </div>
-
         </ng-container>
       </div>
-
     </div>
-
   </div>
 </div>

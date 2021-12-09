@@ -1,9 +1,8 @@
 @import "variables";
 
 .user-list-card {
-  background-color: map-get($theme-colors, 'orange');
-  border-radius: 5px;
-  height: calc(100vh - 100px);
+  background-color: lighten(map-get($theme-colors, 'grey'), 30);
+  height: 100vh;
   .user-card {
     transition: all 300ms ease-in-out;
     cursor: pointer;
@@ -13,10 +12,10 @@
       border-radius: 50%;
     }
     &:hover {
-      background-color: map-get($theme-colors, 'lightBlue');
+      background-color: lighten(map-get($theme-colors, 'bg'), 20);
     }
     &.active {
-      background-color: map-get($theme-colors, 'yellow');
+      background-color: lighten(map-get($theme-colors, 'bg'), 20);
     }
   }
   .user-card:not(:last-child) {
@@ -26,9 +25,8 @@
 
 .chat-container {
   position: relative;
-  background-color: map-get($theme-colors, 'yellow');
-  border-radius: 5px;
-  height: calc(100vh - 100px);
+  background-color: lighten(map-get($theme-colors, 'bg'), 30);
+  height: 100vh;
   .chat-header {
     height: 70px;
     background-color: aquamarine;
@@ -39,7 +37,6 @@
     }
   }
   .chat-body {
-    background-color: #5197D4;
     height: calc(100vh - 125px);
     overflow-y: auto;
     padding: 10px;
@@ -50,13 +47,11 @@
       border-radius: 5px;
       width: fit-content;
       max-width: 90%;
-      margin-bottom: 10px;
+      margin: 10px;
     }
 
-    .same-user {
-      .message-container {
-        background-color: #EB5757;
-      }
+    .message-container.same-user {
+      background-color: lighten(map-get($theme-colors, 'danger'), 10);
     }
   }
 
@@ -65,8 +60,29 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #5e3f61;
+    background-color: lighten(map-get($theme-colors, 'primary'), 20);
     padding: 20px;
+  }
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.currentUserDetails {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.mat-form-field-appearance-outline {
+  .mat-form-field-outline-start, .mat-form-field-outline-gap, .mat-form-field-outline-end {
+    color: map-get($theme-colors, 'primary') !important;
+    background-color: map-get($theme-colors, 'white') !important;
+  }
+  .mat-form-field-infix, .mat-input-element, .mat-form-field-label {
+    color: map-get($theme-colors, 'primary') !important;
   }
 }
 
