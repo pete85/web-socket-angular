@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Concirrus'`, () => {
+  it(`should have as title 'WebChat'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Concirrus');
+    expect(app.title).toEqual('WebChat');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Concirrus app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('WebChat app is running!');
   });
 });
