@@ -12,7 +12,7 @@ export class ChatService {
   private url = 'http://localhost:3000'; // server path
 
   constructor() {
-    this.socket = io(this.url, { transports : ['websocket'] });
+    this.socket = io(this.url, { transports : ['websocket', 'polling', 'flashsocket'] });
   }
 
   joinRoom(data: any): void {
@@ -37,13 +37,12 @@ export class ChatService {
     )
   }
 
+  getStorage() {
+    const storage: string | null = localStorage.getItem('chats');
+    return storage ? JSON.parse(storage) : [];
+  }
 
-
-  // sendMessage(msg: string) {
-  //   this._socket.emit('message', msg);
-  // }
-  //
-  // getMessage(message: string) {
-  //   return this._socket.fromEvent(message).pipe(map((data: any) => data.msg));
-  // }
+  setStorage(data: any) {
+    localStorage.setItem('chats', JSON.stringify(data));
+  }
 }

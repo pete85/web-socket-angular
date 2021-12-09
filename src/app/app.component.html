@@ -34,14 +34,13 @@
               <div fxFlex>
                 <mat-form-field appearance="outline" class="min-w-50px w100">
                   <mat-label>Message</mat-label>
-                  <input matInput type="number" placeholder="Type a message"
+                  <input matInput type="text" placeholder="Type a message"
                          [(ngModel)]="messageText"
                          (keyup)="$event.key === 'Enter' && sendMessage()">
                 </mat-form-field>
               </div>
               <div fxFlex="20" fxLayoutAlign="center center">
                 <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
-                <button mat-raised-button color="warn" (click)="openDialog()">Launch dialog</button>
               </div>
             </div>
           </div>
