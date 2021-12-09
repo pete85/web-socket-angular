@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content>
+  <div fxLayout fxFlex>
+    <div fxFlex>
+      <mat-form-field appearance="outline" class="min-w-50px w100">
+        <mat-label>Phone</mat-label>
+        <input matInput type="number" placeholder="Enter phone number"
+               [(ngModel)]="phone">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="login()">Login</button>
+  <button mat-raised-button color="warn" (click)="closeDialog()">Close</button>
+</div>

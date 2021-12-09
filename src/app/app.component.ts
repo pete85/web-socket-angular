@@ -1,7 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {WebSocketService} from './services/web-socket/web-socket.service';
 import {ChatService} from './services/chat-service/chat.service';
 import {Subscription} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogComponent} from './dialog/dialog.component';
 
 export class Message {
   user?: string;
@@ -9,11 +11,11 @@ export class Message {
 }
 
 export class User {
-  id: number;
-  name: string;
+  id?: number;
+  name?: string;
   phone?: string;
   image?: string;
-  roomId?: any;
+  roomId?: RoomId;
 }
 
 export interface RoomId {
@@ -28,7 +30,7 @@ export interface RoomId {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   subEvent$: Subscription | undefined;
   subEventNGX$: Subscription | undefined;
@@ -41,51 +43,55 @@ export class AppComponent implements OnInit, OnDestroy {
   messageText: string;
   messageArray: Message[] = [];
   phone: string;
-  currentUser: User;
+  currentUser: any;
   selectedUser: any;
+  showScreen: boolean;
   userList: User[] = [
     {
       id: 1,
       name: 'Zbigniew',
-      phone: '534768234',
+      phone: '111',
       image: 'assets/images/user-1.png',
       roomId: {2: 'room-1', 3: 'room-2', 4: 'room-3'}
     },
     {
       id: 2,
       name: 'Ryszard',
-      phone: '598345676',
+      phone: '222',
       image: 'assets/images/user-2.png',
       roomId: {1: 'room-1', 3: 'room-4', 4: 'room-5'}
     },
     {
       id: 3,
       name: 'Marian',
-      phone: '565992334',
+      phone: '333',
       image: 'assets/images/user-3.png',
       roomId: {1: 'room-2', 2: 'room-4', 4: 'room-6'}
     },
     {
       id: 4,
       name: 'Zdzislaw',
-      phone: '509345666',
+      phone: '444',
       image: 'assets/images/user-4.png',
       roomId: {1: 'room-3', 2: 'room-5', 3: 'room-6'}
     }
   ];
 
-  constructor(private _webSocketService: WebSocketService, private _chatService: ChatService) {
+  constructor(public dialog: MatDialog,
+              private _webSocketService: WebSocketService,
+              private _chatService: ChatService) {
+  }
+
+  ngOnInit() {
     this._chatService.getMessage().subscribe(
       (response: Message) => {
-        this.messageArray.push(response);
+        // this.messageArray.push(response);
       }
     );
   }
 
-  ngOnInit() {
-    // this.listenToEvent('test event');
-    // this.listenToEventNGX('test event NGX');
-    this.currentUser = this.userList[0];
+  ngAfterViewInit() {
+    this.openDialog();
   }
 
   selectUserHandler(phone: string): void {
@@ -112,34 +118,21 @@ export class AppComponent implements OnInit, OnDestroy {
     this.messageText = '';
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '450px',
+      data: null
+    });
 
-  // listenToEventNGX(eventExample: string) {
-  //   this.subEventNGX$ = this._chatService.getMessage(eventExample).subscribe(
-  //     response => {
-  //       console.log('Response NGX: ', response);
-  //     },
-  //     error => {},
-  //     () => {
-  //       this.subscriptionList.add(this.subEventNGX$);
-  //     }
-  //   );
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      this.login(result.phone);
+    });
+  }
 
-  // listenToEvent(eventExample: string) {
-  //   this.subEvent$ = this._webSocketService.listen(eventExample).subscribe(
-  //     response => {
-  //       console.log('Response: ', response);
-  //     },
-  //     error => {},
-  //     () => {
-  //       this.subscriptionList.add(this.subEvent$);
-  //     }
-  //   );
-  // }
-
-  // sendEvent(message: string) {
-  //   this._chatService.sendMessage(message);
-  // }
+  login(phone: string) {
+    this.currentUser = this.userList.find(user => user.phone === phone.toString());
+    this.userList = this.userList.filter((user) => user.phone !== phone.toString());
+  }
 
   ngOnDestroy() {
     this.subscriptionList.unsubscribe();

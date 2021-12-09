@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-// import {Socket} from 'ngx-socket-io';
-import {map} from 'rxjs/operators';
 import {io, Socket} from 'socket.io-client';
 import {Observable} from 'rxjs';
 import {Message} from '../../app.component';
@@ -13,10 +11,8 @@ export class ChatService {
   private socket: Socket;
   private url = 'http://localhost:3000'; // server path
 
-  // constructor(private _socket: Socket) { }
-
   constructor() {
-    this.socket = io(this.url);
+    this.socket = io(this.url, { transports : ['websocket'] });
   }
 
   joinRoom(data: any): void {

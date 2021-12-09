@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFlex>
+<div fxLayout="column" fxFlex *ngIf="currentUser" class="animated fadeIn">
   <div fxLayout fxFlex>
 
     <div fxFlex="30">
@@ -6,7 +6,7 @@
         <div class="user-card"
              [class.active]="selectedUser?.phone"
              *ngFor="let user of userList"
-             (click)="selectedUser(user?.phone)">
+             (click)="selectUserHandler(user?.phone)">
           <img [src]="user?.image" [alt]="user?.name" class="avatar">
           <p class="username">{{user?.name}}</p>
         </div>
@@ -33,7 +33,7 @@
             <div fxLayout fxFlex>
               <div fxFlex>
                 <mat-form-field appearance="outline" class="min-w-50px w100">
-                  <mat-label>Nights</mat-label>
+                  <mat-label>Message</mat-label>
                   <input matInput type="number" placeholder="Type a message"
                          [(ngModel)]="messageText"
                          (keyup)="$event.key === 'Enter' && sendMessage()">
@@ -41,6 +41,7 @@
               </div>
               <div fxFlex="20" fxLayoutAlign="center center">
                 <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+                <button mat-raised-button color="warn" (click)="openDialog()">Launch dialog</button>
               </div>
             </div>
           </div>

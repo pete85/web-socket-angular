@@ -1,7 +1,71 @@
 @import "variables";
 
 .user-list-card {
+  background-color: map-get($theme-colors, 'orange');
+  border-radius: 5px;
+  height: calc(100vh - 100px);
+  .user-card {
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    &:hover {
+      background-color: map-get($theme-colors, 'lightBlue');
+    }
+    &.active {
+      background-color: map-get($theme-colors, 'yellow');
+    }
+  }
+  .user-card:not(:last-child) {
+    border-bottom: 1px solid map-get($theme-colors, 'grey');
+  }
+}
+
+.chat-container {
+  position: relative;
   background-color: map-get($theme-colors, 'yellow');
   border-radius: 5px;
+  height: calc(100vh - 100px);
+  .chat-header {
+    height: 70px;
+    background-color: aquamarine;
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
+  .chat-body {
+    background-color: #5197D4;
+    height: calc(100vh - 125px);
+    overflow-y: auto;
+
+    .message-container {
+      background-color: azure;
+      padding: 5px;
+      border-radius: 5px;
+      width: fit-content;
+      max-width: 90%;
+      margin-bottom: 10px;
+    }
+
+    .same-user {
+      .message-container {
+        background-color: #EB5757;
+      }
+    }
+  }
+
+  .chat-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #5e3f61;
+    padding: 20px;
+  }
 }
 

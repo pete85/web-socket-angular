@@ -1,4 +1,5 @@
 let express = require('express');
+let cors = require('cors');
 let app = express();
 let http = require('http');
 let server = http.Server(app);
