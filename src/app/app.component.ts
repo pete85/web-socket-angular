@@ -170,6 +170,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   login(phone: string) {
+    console.log('Current user: ', this.currentUser);
     this.currentUser = this.userList.find(user => user.phone === phone.toString());
     this.userList = this.userList.filter((user) => user.phone !== phone.toString());
   }

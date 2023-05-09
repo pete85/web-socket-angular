@@ -20,6 +20,7 @@ export class ChatService {
   }
 
   sendMessage(data: any): void {
+    console.log('message: ', data);
     this.socket.emit('message', data);
   }
 
