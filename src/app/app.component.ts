@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {WebSocketService} from './services/web-socket/web-socket.service';
 import {ChatService} from './services/chat-service/chat.service';
 import {Subscription} from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {DialogComponent} from './dialog/dialog.component';
 
 export class Message {
